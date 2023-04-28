@@ -3,7 +3,8 @@
   "displayName": "Code Typewriter Effect",
   "publisher": "junsantilla",
   "description": "",
-  "version": "0.0.2",
+  "version": "0.0.4",
+  "icon": "/cte.png",
   "engines": {
     "vscode": "^1.77.0"
   },

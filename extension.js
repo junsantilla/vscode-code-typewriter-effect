@@ -31,29 +31,33 @@ function activate(context) {
 			function type() {
 				let line = text.split("\n")[currentPosition];
 				let i = 0;
-				let intervalId = setInterval(() => {
-					editor
-						.edit((editBuilder) => {
-							editBuilder.insert(
-								new vscode.Position(currentPosition, i),
-								line.charAt(i)
-							);
-						})
-						.then(() => {
-							i++;
-							if (i >= line.length) {
-								clearInterval(intervalId);
-								currentPosition++;
-								if (currentPosition < text.split("\n").length) {
-									setTimeout(type, 100);
-								}
-							}
-						});
-				}, 50);
+
+				function insertNextCharacter() {
+					if (i < line.length) {
+						editor
+							.edit((editBuilder) => {
+								editBuilder.insert(
+									new vscode.Position(currentPosition, i),
+									line.charAt(i)
+								);
+							})
+							.then(() => {
+								i++;
+								setTimeout(insertNextCharacter, 5);
+							});
+					} else {
+						currentPosition++;
+						if (currentPosition < text.split("\n").length) {
+							setTimeout(type, 0);
+						}
+					}
+				}
+
+				insertNextCharacter();
 			}
 
 			// Display a message box to the user
-			vscode.window.showInformationMessage("Retyping your code!");
+			// vscode.window.showInformationMessage("Retyping your code!");
 
 			// Start the typewriter animation
 			type();

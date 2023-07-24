@@ -10,3 +10,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Fixed an issue with the "retype" function that now includes the first letter.
 
+## [0.2.0]
+
+### Added
+
+- Added a new command "Stop Typewriter Effect" to stop the typing effect while it's running.
+- Updated the name of the command "retype" to "Start Typewriter Effect" for better clarity.
+

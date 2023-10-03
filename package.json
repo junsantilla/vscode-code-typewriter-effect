@@ -1,56 +1,69 @@
 {
-  "name": "code-typewriter-effect",
-  "displayName": "Code Typewriter Effect",
-  "publisher": "junsantilla",
-  "description": "This VSCode extension adds a typewriter effect to your code when activated.",
-  "version": "0.2.0",
-  "icon": "/cte.png",
-  "engines": {
-    "vscode": "^1.77.0"
-  },
-  "categories": ["Other"],
-  "activationEvents": [],
-  "main": "./extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "code-typewriter-effect.retype",
-        "title": "Start Typewriter Effect"
-      },
-      {
-        "command": "code-typewriter-effect.stop",
-        "title": "Stop Typewriter Effect"
-      }
-    ],
-    "menus": {
-      "editor/context": [
-        {
-          "command": "code-typewriter-effect.retype",
-          "group": "1_modification",
-          "when": "editorTextFocus"
-        },
-        {
-          "command": "code-typewriter-effect.stop",
-          "group": "1_modification",
-          "when": "editorTextFocus"
-        }
-      ]
-    }
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "node ./test/runTest.js"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.77.0",
-    "@types/glob": "^8.1.0",
-    "@types/mocha": "^10.0.1",
-    "@types/node": "16.x",
-    "eslint": "^8.36.0",
-    "glob": "^8.1.0",
-    "mocha": "^10.2.0",
-    "typescript": "^4.9.5",
-    "@vscode/test-electron": "^2.3.0"
-  }
+	"name": "code-typewriter-effect",
+	"displayName": "Code Typewriter Effect",
+	"publisher": "junsantilla",
+	"description": "This VSCode extension adds a typewriter effect to your code when activated.",
+	"version": "0.3.0",
+	"icon": "/cte.png",
+	"engines": {
+		"vscode": "^1.77.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "code-typewriter-effect.retype",
+				"title": "Start Typewriter Effect"
+			},
+			{
+				"command": "code-typewriter-effect.stop",
+				"title": "Stop Typewriter Effect"
+			}
+		],
+		"configuration": {
+			"type": "object",
+			"title": "Code Typewriter Effect",
+			"properties": {
+				"code-typewriter-effect.codeTypewriterEffectTypingSpeed": {
+					"type": "number",
+					"default": 50,
+					"description": "Typing speed in milliseconds per character. Lower values make it faster."
+				}
+			}
+		},
+		"menus": {
+			"editor/context": [
+				{
+					"command": "code-typewriter-effect.retype",
+					"group": "1_modification",
+					"when": "editorTextFocus"
+				},
+				{
+					"command": "code-typewriter-effect.stop",
+					"group": "1_modification",
+					"when": "editorTextFocus"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.77.0",
+		"@types/glob": "^8.1.0",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "16.x",
+		"eslint": "^8.36.0",
+		"glob": "^8.1.0",
+		"mocha": "^10.2.0",
+		"typescript": "^4.9.5",
+		"@vscode/test-electron": "^2.3.0"
+	}
 }
